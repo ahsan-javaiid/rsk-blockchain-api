@@ -1,0 +1,10 @@
+[
+    {
+        "path": "web3_clientVersion",
+        "data": {"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":67}    
+    },
+    {
+        "path": "net_version",
+        "data": {"jsonrpc":"2.0","method":"net_version","params":[],"id":67}
+    }
+]

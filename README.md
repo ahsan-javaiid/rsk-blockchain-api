@@ -1,3 +1,8 @@
 # rsk-blockchain-api
 
-Restapi to interact with rskj node 
+Rest api to interact with rskj node 
+
+### Starting the server
+```
+go run main.go
+```

@@ -4,9 +4,11 @@ import (
     "fmt"
     "net/http"
 	"encoding/json"
+	config "github.com/ahsan-javaiid/rsk-blockchain-api/config"
 )
 
 func Process(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("rpc json:", config.RpcList)
 
     if r.URL.Path != "/" {
         http.Error(w, "404 not found.", http.StatusNotFound)

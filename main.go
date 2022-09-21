@@ -4,11 +4,11 @@ import (
     "log"
     "net/http"
 	api "github.com/ahsan-javaiid/rsk-blockchain-api/api"
+	config "github.com/ahsan-javaiid/rsk-blockchain-api/config"
 )
 
-
-
 func main() {
+    config.LoadConfiguration("config/rpc.json")
 
     http.HandleFunc("/", api.Process)
 

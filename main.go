@@ -10,7 +10,7 @@ import (
 func main() {
     config.LoadConfiguration("config/rpc.json")
 
-    http.HandleFunc("/", api.Process)
+    http.HandleFunc("/", api.Router)
 
     log.Println("Listening...")
     log.Fatal(http.ListenAndServe(":8080", nil))

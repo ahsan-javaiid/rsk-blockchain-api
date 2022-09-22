@@ -30,7 +30,6 @@ func LoadConfiguration(file string) []RPC {
 
 	defer filename.Close()
 
-
 	data, err := ioutil.ReadAll(filename)
 
 	if err != nil {

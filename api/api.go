@@ -93,6 +93,7 @@ func getRPCPayload(rpcName string) (config.RPC) {
 	return config.RPC{}
 }
 
+// Sends http post requests to rsk node and writes respone to channel
 func httpRequest(url string, c chan http.Response, payload *[]byte) {
 	resp, err := http.Post(url, "application/json", bytes.NewBuffer(*payload))
 

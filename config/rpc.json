@@ -6,5 +6,9 @@
     {
         "path": "net_version",
         "data": {"jsonrpc":"2.0","method":"net_version","params":[],"id":67}
+    },
+    {
+        "path": "net_peerCount",
+        "data": {"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":74}
     }
 ]

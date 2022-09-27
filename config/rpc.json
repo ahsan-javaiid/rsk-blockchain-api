@@ -10,5 +10,9 @@
     {
         "path": "net_peerCount",
         "data": {"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":74}
+    },
+    {
+        "path": "net_peerList",
+        "data": {"jsonrpc":"2.0","method":"net_peerList","params":[],"id":1}
     }
 ]

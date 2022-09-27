@@ -48,5 +48,19 @@ GET localhost:8080/testnet/net_peerCount
   "result": "0x2" // 2
 }
  ```
+- net_peerList
+ ```
+GET localhost:8080/testnet/net_peerList
+
+// Result
+{
+  "id":1,
+  "jsonrpc": "2.0",
+  "result": [
+       "8d19eb7e9c21484ea831557d63a6a80146ca2469af2b4044125dc8b7598b3b6dca5ad14a2c693a70f572f060be435d5d2822464a126817bffc5623746fe8d8c3 | 190.57.233.165/190.57.233.165:60480",
+       ...
+  ]
+}
+ ```
 
 ### More Coming soon ....

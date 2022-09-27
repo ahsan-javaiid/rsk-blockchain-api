@@ -26,10 +26,24 @@ func Router(w http.ResponseWriter, r *http.Request) {
     }
 }
 
-// http://localhost:8080/testnet/web3_clientVersion
+type ErrorResp struct {
+	Status  string   `json:"status"`
+	Msg     string   `json:"msg"`
+}
+
 func Next(w http.ResponseWriter, r *http.Request) {
     network, rpcName := splitLink(r.URL.Path, "/")
 	rpcConfig := getRPCPayload(rpcName)
+
+	if rpcConfig.Path == "" {
+		w.Header().Set("Content-Type", "application/json")
+
+		errResp := ErrorResp{ Status: "error", Msg: "rpc method not found"}
+		
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(errResp)
+		return
+	}
 	
 	rpcJSON, err := json.Marshal(rpcConfig.Data)
 	if err != nil {
@@ -56,8 +70,7 @@ func splitLink(s, sep string) (network string, rpcName string) {
 }
 
 func getRPCPayload(rpcName string) (config.RPC) {
-	for index, element := range config.RpcList {
-		fmt.Println(index, element)
+	for _, element := range config.RpcList {
 		if rpcName == element.Path {
 			return element
 		}

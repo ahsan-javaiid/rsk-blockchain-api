@@ -2,9 +2,12 @@ package main
 
 import (
     "log"
+    "fmt"
+    "os"
     "net/http"
 	api "github.com/ahsan-javaiid/rsk-blockchain-api/api"
 	config "github.com/ahsan-javaiid/rsk-blockchain-api/config"
+    utils "github.com/ahsan-javaiid/rsk-blockchain-api/utils"
 )
 
 func main() {
@@ -12,6 +15,13 @@ func main() {
 
     http.HandleFunc("/", api.Router)
 
-    log.Println("Listening...")
-    log.Fatal(http.ListenAndServe(":8080", nil))
+    if !utils.IsEnvExist("PORT") {
+        os.Setenv("PORT", "8080")
+    }
+
+    PORT := os.Getenv("PORT")
+
+    log.Println("Listening on port ",PORT)
+
+    log.Fatal(http.ListenAndServe(fmt.Sprint(":", PORT), nil))
 }

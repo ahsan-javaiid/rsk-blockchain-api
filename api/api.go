@@ -71,6 +71,10 @@ func Next(w http.ResponseWriter, r *http.Request) {
 	defer resp.Body.Close() 
 }
 
+/*
+ * Splits url like localhost:8080/testnet/eth_chainId on forward slash
+ * returns network and rpc request name 
+ */
 func splitLink(s, sep string) (network string, rpcName string) {
     segments := strings.Split(s, sep)
 	network = segments[1]

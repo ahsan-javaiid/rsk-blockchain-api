@@ -14,5 +14,9 @@
     {
         "path": "net_peerList",
         "data": {"jsonrpc":"2.0","method":"net_peerList","params":[],"id":1}
+    },
+    {
+        "path": "eth_chainId",
+        "data": {"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":67}
     }
 ]

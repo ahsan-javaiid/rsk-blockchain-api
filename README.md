@@ -63,4 +63,16 @@ GET localhost:8080/testnet/net_peerList
 }
  ```
 
+ - eth_chainId
+ ```
+GET localhost:8080/testnet/eth_chainId
+
+// Result
+{
+    "jsonrpc": "2.0",
+    "id": 67,
+    "result": "0x1f"
+}
+ ```
+
 ### More Coming soon ....

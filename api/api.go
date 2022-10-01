@@ -11,6 +11,7 @@ import (
 	config "github.com/ahsan-javaiid/rsk-blockchain-api/config"
 )
 
+// map to locate rpc url based on request url
 var networkConfig map[string]string = map[string]string{
     "testnet": "https://public-node.testnet.rsk.co",
 	"mainnet": "https://public-node.rsk.co",

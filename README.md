@@ -1,6 +1,6 @@
 # rsk-blockchain-api
 
-Rest api to interact with rskj node 
+Rest api to interact with rskj node. This api uses goroutines and channels to handle parallel requests and scalable enough to handle multiple requests at same time.
 
 ### Starting the server
 ```

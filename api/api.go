@@ -50,15 +50,24 @@ func Next(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	resp, err := http.Post(networkConfig[network], "application/json", bytes.NewBuffer(rpcJSON))
+	channel := make(chan http.Response)
 
-	if err != nil {
-		log.Fatal(err)
-	}
+	// Perform http request in go routine to support parallelism
+    go httpRequest(networkConfig[network], channel, &rpcJSON)
 
+	// Read response
+	resp := <- channel 
+
+	// Set response headers
 	w.Header().Set("Content-Type", resp.Header.Get("Content-Type"))
+
+	// Send response
     io.Copy(w, resp.Body)
-    resp.Body.Close()
+
+	// Close channel
+	defer close(channel) 
+	// Close http response body
+	defer resp.Body.Close() 
 }
 
 func splitLink(s, sep string) (network string, rpcName string) {
@@ -77,4 +86,14 @@ func getRPCPayload(rpcName string) (config.RPC) {
 	}
 
 	return config.RPC{}
+}
+
+func httpRequest(url string, c chan http.Response, payload *[]byte) {
+	resp, err := http.Post(url, "application/json", bytes.NewBuffer(*payload))
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c <- *resp
 }

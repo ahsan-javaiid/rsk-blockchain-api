@@ -54,7 +54,7 @@ func Next(w http.ResponseWriter, r *http.Request) {
 	channel := make(chan http.Response)
 
 	// Perform http request in go routine to support parallelism
-    go httpRequest(networkConfig[network], channel, &rpcJSON)
+	go httpRequest(networkConfig[network], channel, &rpcJSON)
 
 	// Read response
 	resp := <- channel 

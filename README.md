@@ -71,7 +71,7 @@ GET localhost:8080/testnet/eth_chainId
 {
     "jsonrpc": "2.0",
     "id": 67,
-    "result": "0x1f"
+    "result": "0x1f"  // in hex
 }
  ```
 

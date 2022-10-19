@@ -1,6 +1,7 @@
 # rsk-blockchain-api
 
-Rest api to interact with rskj node. This api uses goroutines and channels to handle parallel requests and scalable enough to handle multiple requests at same time.
+- Restapi to interact with rskj node. This api uses goroutines and channels to handle parallel requests and scalable enough to handle multiple requests at same time
+- I have plan to add websockets support. Idea is to keep checking the new blocks, transactions and logs in a loop and emit the events
 
 ### Starting the server
 ```
@@ -71,7 +72,7 @@ GET localhost:8080/testnet/eth_chainId
 {
     "jsonrpc": "2.0",
     "id": 67,
-    "result": "0x1f"  // in hex
+    "result": "0x1f"  // in hex format
 }
  ```
 
